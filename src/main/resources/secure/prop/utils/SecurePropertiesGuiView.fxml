@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+   prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="secure.prop.utils.SecurePropertiesGuiController">
+   <children>
+      <TitledPane animated="false" text="Config">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="600.0">
+               <children>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0"
+                           prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="512.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1">
+                           <children>
+                              <RadioButton fx:id="radioEncrypt" mnemonicParsing="false"
+                                 selected="true" text="Encrypt">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="actionGroup" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="radioDecrypt" mnemonicParsing="false"
+                                 text="Decrypt" toggleGroup="$actionGroup">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </RadioButton>
+                           </children>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </HBox>
+                        <ComboBox fx:id="comboAlgorithm" GridPane.columnIndex="1"
+                           GridPane.rowIndex="1" />
+                        <Label text="Algorithm" GridPane.rowIndex="1" />
+                        <Label text="Mode" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="comboMode" prefWidth="150.0" GridPane.columnIndex="1"
+                           GridPane.rowIndex="2" />
+                        <CheckBox fx:id="checkRandomIV" mnemonicParsing="false" text="Random IV"
+                           GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label prefWidth="20.0" text="Key" GridPane.rowIndex="4" />
+                        <TextField fx:id="textKey" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="Action" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane animated="false" text="Text Mode">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="120.0" prefWidth="600.0">
+               <children>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0"
+                           prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="512.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="a" text="Value" />
+                        <TextField fx:id="textValue" prefWidth="600.0" GridPane.columnIndex="1" />
+                        <Label text="Result" GridPane.rowIndex="1" />
+                        <TextField fx:id="textResult" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0"
+                           GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#handleRun" text="Run" />
+                              <Button mnemonicParsing="false" onAction="#handleReverse"
+                                 text="Reverse">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+      <TitledPane animated="false" text="Batch Mode">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="600.0">
+               <children>
+                  <GridPane prefWidth="600.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="88.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="512.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Action" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0"
+                           GridPane.columnIndex="1">
+                           <children>
+                              <RadioButton fx:id="radioFile" mnemonicParsing="false" selected="true"
+                                 text="file">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="batchActionGroup" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="radioFileLevel" mnemonicParsing="false"
+                                 text="file-level" toggleGroup="$batchActionGroup">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </RadioButton>
+                           </children>
+                        </HBox>
+                        <Label text="Input Dir" GridPane.rowIndex="1" />
+                        <TextField fx:id="textInputDir" promptText="Drop a directory from Explorer"
+                           GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <tooltip>
+                              <Tooltip text="Drop a directory from Explorer" />
+                           </tooltip>
+                        </TextField>
+                        <TextField fx:id="textOutputDir" promptText="Drop a directory from Explorer"
+                           GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <tooltip>
+                              <Tooltip text="Drop a directory from Explorer" />
+                           </tooltip>
+                        </TextField>
+                        <Label text="Output Dir" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#handleRunBach" text="Run Batch"
+                           GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+   </children>
+</VBox>
