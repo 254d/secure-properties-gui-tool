@@ -5,6 +5,10 @@
   <groupId>secure.prop.util</groupId>
   <artifactId>secure-properties-gui-tool</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <organization>
+    <name>254d</name>
+    <url>https://github.com/254d/secure-properties-gui-tool</url>
+  </organization>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
@@ -42,6 +46,7 @@
     </dependency>
   </dependencies>
   <build>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -114,6 +119,7 @@
         <artifactId>maven-assembly-plugin</artifactId>
         <version>3.8.0</version>
         <configuration>
+          <appendAssemblyId>false</appendAssemblyId>
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>
@@ -133,7 +139,6 @@
           </execution>
         </executions>
       </plugin>
-<!--
       <plugin>
         <groupId>com.akathist.maven.plugins.launch4j</groupId>
         <artifactId>launch4j-maven-plugin</artifactId>
@@ -147,18 +152,22 @@
             </goals>
             <configuration>
               <headerType>gui</headerType>
-              <outfile>target/myapp.exe</outfile>
-              <jar>target/secure-properties-gui-tool-0.0.1-SNAPSHOT-jar-with-dependencies.jar</jar>
-              <errTitle>App Error</errTitle>
+              <outfile>target/${project.artifactId}.exe</outfile>
+              <jar>target/${project.artifactId}.jar</jar>
+              <errTitle>Secure Properties GUI Tool</errTitle>
               <stayAlive>false</stayAlive>
               <jre>
                 <minVersion>17</minVersion>
               </jre>
+              <versionInfo>
+                <fileDescription>Secure Properties GUI Tool</fileDescription>
+                <copyright>254d</copyright>
+                <productName>Secure Properties GUI Tool</productName>
+              </versionInfo>
             </configuration>
           </execution>
         </executions>
       </plugin>
--->
     </plugins>
   </build>
 </project>
