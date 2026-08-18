@@ -164,6 +164,7 @@
                 <copyright>254d</copyright>
                 <productName>Secure Properties GUI Tool</productName>
               </versionInfo>
+              <icon>src/main/resources/icon/main.ico</icon>
             </configuration>
           </execution>
         </executions>
