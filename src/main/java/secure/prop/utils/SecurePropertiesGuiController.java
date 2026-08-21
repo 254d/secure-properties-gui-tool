@@ -180,8 +180,12 @@ public class SecurePropertiesGuiController implements Initializable {
                 log.debug("copy: {} -> {}", tempOutFile, outFile);
                 Files.copy(tempOut, new File(outFile).toPath(), StandardCopyOption.REPLACE_EXISTING);
 
+                // Delete temp files
+                if (type.equals("file")) {
+                    log.debug("delete: {}", tempIn);
+                    Files.deleteIfExists(tempIn);
+                }
                 log.debug("delete: {}", tempOutFile);
-                // Files.deleteIfExists(tempIn); // BUG
                 Files.deleteIfExists(tempOut);
             }
 
