@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Optional;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -32,6 +35,21 @@ public class SecurePropertiesGui extends Application {
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.setTitle("Secure Properties GUI Tool");
+            primaryStage.setOnCloseRequest(event -> {
+                Alert confirmAlert = new Alert(
+                        Alert.AlertType.CONFIRMATION,
+                        "Do you want to exit the application?",
+                        ButtonType.YES,
+                        ButtonType.NO);
+                confirmAlert.initOwner(primaryStage);
+                confirmAlert.setTitle("Confirmation");
+                confirmAlert.setHeaderText("Exit");
+
+                Optional<ButtonType> result = confirmAlert.showAndWait();
+                if (result.isEmpty() || result.get() != ButtonType.YES) {
+                    event.consume();
+                }
+            });
             primaryStage.show();
         } catch (IOException e) {
             log.error("Error loading FXML file: {}", e.getMessage());

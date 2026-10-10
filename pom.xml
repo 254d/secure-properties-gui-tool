@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>secure.prop.util</groupId>
   <artifactId>secure-properties-gui-tool</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <organization>
     <name>254d</name>
     <url>https://github.com/254d/secure-properties-gui-tool</url>
